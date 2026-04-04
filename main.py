@@ -17,8 +17,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-SERPER_KEY = "c7b138492fae32356618d7a9dfffeb75db39fdc7"
-client = genai.Client(api_key="AIzaSyCsH-8ywndsGaWPoQ31Hgi8Qw227U2haHQ")
+SERPER_KEY = os.getenv("SERPER_KEY")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+client = genai.Client(api_key=GOOGLE_API_KEY)
 
 async def search_serper(query: str) -> List[Dict]:
     search_url = "https://google.serper.dev/search"
